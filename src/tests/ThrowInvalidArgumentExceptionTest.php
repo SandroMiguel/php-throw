@@ -75,4 +75,72 @@ class ThrowInvalidArgumentExceptionTest extends TestCase
 
         $this->assertTrue(true);
     }
+
+    /**
+     * Test if an exception is thrown when the value is negative, without a
+     *  custom message.
+     */
+    public function testIfNegativeWithValueWithoutCustomMessage(): void
+    {
+        $value = -5;
+
+        $this->expectException(\PhpThrow\ThrowInvalidArgumentException::class);
+        $this->expectExceptionMessage(
+            \sprintf('The value %d must be greater than or equal to 0.', $value)
+        );
+
+        \PhpThrow\ThrowInvalidArgumentException::ifNegativeWithValue($value);
+    }
+
+    /**
+     * Test if an exception is thrown when the value is negative, with a
+     *  custom message without '%d' placeholder.
+     */
+    public function testIfNegativeWithValueWithCustomMsgNoPlaceholder(): void
+    {
+        $value = -5;
+        $message = 'Custom error message';
+
+        $this->expectException(\PhpThrow\ThrowInvalidArgumentException::class);
+        $this->expectExceptionMessage(
+            \sprintf('%s. Provided %d', $message, $value)
+        );
+
+        \PhpThrow\ThrowInvalidArgumentException::ifNegativeWithValue(
+            $value,
+            $message
+        );
+    }
+
+    /**
+     * Test if an exception is thrown when the value is negative, with a
+     *  custom message containing '%d' placeholder.
+     */
+    public function testIfNegativeWithValueWithCustomMsgWithPlaceholder(): void
+    {
+        $value = -5;
+        $message = 'The value %d is negative.';
+
+        $this->expectException(\PhpThrow\ThrowInvalidArgumentException::class);
+        $this->expectExceptionMessage(
+            \sprintf($message, $value)
+        );
+
+        \PhpThrow\ThrowInvalidArgumentException::ifNegativeWithValue(
+            $value,
+            $message
+        );
+    }
+
+    /**
+     * Test if no exception is thrown when the value is positive.
+     */
+    public function testIfNegativeWithValueNotThrowException(): void
+    {
+        $value = 5;
+
+        \PhpThrow\ThrowInvalidArgumentException::ifNegativeWithValue($value);
+
+        $this->expectNotToPerformAssertions();
+    }
 }
