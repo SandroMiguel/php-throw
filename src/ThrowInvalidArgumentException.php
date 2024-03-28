@@ -23,13 +23,13 @@ class ThrowInvalidArgumentException extends \InvalidArgumentException
     use BaseExceptionTrait;
 
     /**
-     * Throws an exception if the numeric value is less than 0.
+     * Throws an exception if the numeric value is negative.
      *
      * @param float|int $value The numeric value to check.
-     * @param string|null $message The error message to use if the value is less
-     *  than 0. If not provided, a default message will be used.
+     * @param string|null $message The error message to use if the value is
+     *  negative. If not provided, a default message will be used.
      *
-     * @throws ThrowInvalidArgumentException If the value is less than 0.
+     * @throws ThrowInvalidArgumentException If the value is negative.
      */
     public static function ifNegative(
         float|int $value,
@@ -40,5 +40,31 @@ class ThrowInvalidArgumentException extends \InvalidArgumentException
 
             throw new self($message);
         }
+    }
+
+    /**
+     * Throws an exception if the numeric value is negative, including the
+     *  value in the error message.
+     *
+     * @param float|int $value The numeric value to check.
+     * @param string|null $message The error message to use if the value is
+     *  negative. If not provided, a default message will be used.
+     *
+     * @throws ThrowInvalidArgumentException If the value is negative.
+     */
+    public static function ifNegativeWithValue(
+        float|int $value,
+        ?string $message = null,
+    ): void {
+        if ($message !== null && !\str_contains($message, '%d')) {
+            $message = \sprintf('%s. Provided %d', $message, $value);
+        }
+
+        $message = \sprintf(
+            $message ?? 'The value %d must be greater than or equal to 0.',
+            $value
+        );
+
+        self::ifNegative($value, $message);
     }
 }
