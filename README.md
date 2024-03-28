@@ -101,7 +101,10 @@ try {
 You can also use a custom message without the placeholder:
 
 ```php
-ThrowInvalidArgumentException::ifNegativeWithValue(-1, 'Value must be positive'); // Output: Value must be positive. Provided -1
+ThrowInvalidArgumentException::ifNegativeWithValue(
+    -1,
+    'Value must be positive'
+); // Output: Value must be positive. Provided -1
 ```
 
 ## Contributing
