@@ -86,6 +86,24 @@ try {
 }
 ```
 
+You can also use a custom message without the placeholder:
+
+```php
+ThrowInvalidArgumentException::ifNegativeWithValue(-1, 'Value must be positive'); // Output: Value must be positive. Provided -1
+```
+
+#### ifNegativeWithValue()
+
+`ifNegativeWithValue($value, $message = null)`: Throws an exception if the numeric value is negative, including the value in the error message.
+
+```php
+try {
+    ThrowInvalidArgumentException::ifNegativeWithValue(-1);
+} catch (\PhpThrow\ThrowInvalidArgumentException $e) {
+    echo $e->getMessage(); // Output: The value -1 must be greater than or equal to 0.
+}
+```
+
 ## Contributing
 
 Want to contribute? All contributions are welcome. Read the [contributing guide](CONTRIBUTING.md).
