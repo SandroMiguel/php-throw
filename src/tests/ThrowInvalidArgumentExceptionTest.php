@@ -38,8 +38,8 @@ class ThrowInvalidArgumentExceptionTest extends TestCase
     }
 
     /**
-     * Test if the exception is thrown when the value is negative with default
-     *  message.
+     * Test if the exception is thrown when the value is greater than or equal
+     *  to 0 with default message.
      */
     public function testIfNegativeWithDefaultMessage(): void
     {
@@ -52,8 +52,21 @@ class ThrowInvalidArgumentExceptionTest extends TestCase
     }
 
     /**
-     * Test if the exception is thrown when the value is negative with custom
-     *  message.
+     * Test if the exception is thrown when the value is 0 with default message.
+     */
+    public function testIfNegativeWithZeroValue(): void
+    {
+        $this->expectException(\PhpThrow\ThrowInvalidArgumentException::class);
+        $this->expectExceptionMessage(
+            'The value must be greater than or equal to 0.'
+        );
+
+        \PhpThrow\ThrowInvalidArgumentException::ifNegative(0);
+    }
+
+    /**
+     * Test if the exception is thrown when the value is greater than or equal
+     *  to 0 with custom message.
      */
     public function testIfNegativeWithCustomMessage(): void
     {

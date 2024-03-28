@@ -35,7 +35,7 @@ class ThrowInvalidArgumentException extends \InvalidArgumentException
         float|int $value,
         ?string $message = null,
     ): void {
-        if ($value < 0) {
+        if ($value <= 0) {
             $message ??= 'The value must be greater than or equal to 0.';
 
             throw new self($message);
