@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/SandroMiguel/php-throw/compare/v1.0.1...v1.1.0) (2024-03-30)
+
+
+### Features
+
+* **ThrowInvalidArgumentException:** rename ifNegative method to ifZeroOrNegative for clarity ([96725c4](https://github.com/SandroMiguel/php-throw/commit/96725c48ccc4f24d709ace66a23eda61ce6d1764))
+
 ## [1.0.1](https://github.com/SandroMiguel/php-throw/compare/v1.0.0...v1.0.1) (2024-03-30)
 
 
