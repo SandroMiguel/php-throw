@@ -28,13 +28,10 @@ class ThrowInvalidArgumentExceptionTest extends TestCase
     public function testCreateMethod(): void
     {
         $message = 'Test message';
-        $exception = \PhpThrow\ThrowInvalidArgumentException::create($message);
+        $this->expectException(\PhpThrow\ThrowInvalidArgumentException::class);
+        $this->expectExceptionMessage($message);
 
-        $this->assertInstanceOf(
-            \PhpThrow\ThrowInvalidArgumentException::class,
-            $exception
-        );
-        $this->assertEquals($message, $exception->getMessage());
+        \PhpThrow\ThrowInvalidArgumentException::create($message);
     }
 
     /**
