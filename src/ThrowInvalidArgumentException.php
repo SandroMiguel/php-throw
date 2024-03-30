@@ -31,7 +31,7 @@ class ThrowInvalidArgumentException extends \InvalidArgumentException
      *
      * @throws ThrowInvalidArgumentException If the value is negative.
      */
-    public static function ifNegative(
+    public static function ifZeroOrNegative(
         float|int $value,
         ?string $message = null,
     ): void {
@@ -52,7 +52,7 @@ class ThrowInvalidArgumentException extends \InvalidArgumentException
      *
      * @throws ThrowInvalidArgumentException If the value is negative.
      */
-    public static function ifNegativeWithValue(
+    public static function ifZeroOrNegativeWithValue(
         float|int $value,
         ?string $message = null,
     ): void {
@@ -65,6 +65,6 @@ class ThrowInvalidArgumentException extends \InvalidArgumentException
             $value
         );
 
-        self::ifNegative($value, $message);
+        self::ifZeroOrNegative($value, $message);
     }
 }
