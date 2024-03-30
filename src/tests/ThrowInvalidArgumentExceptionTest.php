@@ -45,7 +45,7 @@ class ThrowInvalidArgumentExceptionTest extends TestCase
             'The value must be greater than or equal to 0.'
         );
 
-        \PhpThrow\ThrowInvalidArgumentException::ifNegative(-1);
+        \PhpThrow\ThrowInvalidArgumentException::ifZeroOrNegative(-1);
     }
 
     /**
@@ -58,7 +58,7 @@ class ThrowInvalidArgumentExceptionTest extends TestCase
             'The value must be greater than or equal to 0.'
         );
 
-        \PhpThrow\ThrowInvalidArgumentException::ifNegative(0);
+        \PhpThrow\ThrowInvalidArgumentException::ifZeroOrNegative(0);
     }
 
     /**
@@ -70,7 +70,7 @@ class ThrowInvalidArgumentExceptionTest extends TestCase
         $this->expectException(\PhpThrow\ThrowInvalidArgumentException::class);
         $this->expectExceptionMessage('My custom error message.');
 
-        \PhpThrow\ThrowInvalidArgumentException::ifNegative(
+        \PhpThrow\ThrowInvalidArgumentException::ifZeroOrNegative(
             -1,
             'My custom error message.'
         );
@@ -81,7 +81,7 @@ class ThrowInvalidArgumentExceptionTest extends TestCase
      */
     public function testIfPositiveValueDoesNotThrowException(): void
     {
-        \PhpThrow\ThrowInvalidArgumentException::ifNegative(1);
+        \PhpThrow\ThrowInvalidArgumentException::ifZeroOrNegative(1);
 
         $this->assertTrue(true);
     }
@@ -99,7 +99,9 @@ class ThrowInvalidArgumentExceptionTest extends TestCase
             \sprintf('The value %d must be greater than or equal to 0.', $value)
         );
 
-        \PhpThrow\ThrowInvalidArgumentException::ifNegativeWithValue($value);
+        \PhpThrow\ThrowInvalidArgumentException::ifZeroOrNegativeWithValue(
+            $value
+        );
     }
 
     /**
@@ -116,7 +118,7 @@ class ThrowInvalidArgumentExceptionTest extends TestCase
             \sprintf('%s. Provided %d', $message, $value)
         );
 
-        \PhpThrow\ThrowInvalidArgumentException::ifNegativeWithValue(
+        \PhpThrow\ThrowInvalidArgumentException::ifZeroOrNegativeWithValue(
             $value,
             $message
         );
@@ -136,7 +138,7 @@ class ThrowInvalidArgumentExceptionTest extends TestCase
             \sprintf($message, $value)
         );
 
-        \PhpThrow\ThrowInvalidArgumentException::ifNegativeWithValue(
+        \PhpThrow\ThrowInvalidArgumentException::ifZeroOrNegativeWithValue(
             $value,
             $message
         );
@@ -149,7 +151,9 @@ class ThrowInvalidArgumentExceptionTest extends TestCase
     {
         $value = 5;
 
-        \PhpThrow\ThrowInvalidArgumentException::ifNegativeWithValue($value);
+        \PhpThrow\ThrowInvalidArgumentException::ifZeroOrNegativeWithValue(
+            $value
+        );
 
         $this->expectNotToPerformAssertions();
     }
