@@ -7,7 +7,7 @@
  * @license MIT https://github.com/SandroMiguel/php-throw/blob/master/LICENSE
  * @author Sandro Miguel Marques <sandromiguel@sandromiguel.com>
  * @link https://github.com/SandroMiguel/php-throw
- * @version 1.0.0 (2024-03-28)
+ * @version 1.0.1 (2024-03-30)
  */
 
 declare(strict_types=1);
@@ -24,10 +24,10 @@ trait BaseExceptionTrait
      *
      * @param string $message The error message.
      *
-     * @return self The newly created exception instance.
+     * @throws static The newly created exception instance.
      */
-    public static function create(string $message): self
+    public static function create(string $message): void
     {
-        return new self($message);
+        throw new static($message);
     }
 }
