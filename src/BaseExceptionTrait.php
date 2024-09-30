@@ -23,11 +23,12 @@ trait BaseExceptionTrait
      * Creates a new instance of the exception with the given message.
      *
      * @param string $message The error message.
+     * @param int $code The error code.
      *
      * @throws static The newly created exception instance.
      */
-    public static function create(string $message): void
+    public static function create(string $message, int $code = 0): void
     {
-        throw new static($message);
+        throw new static($message, $code);
     }
 }

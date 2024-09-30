@@ -107,6 +107,21 @@ ThrowInvalidArgumentException::ifZeroOrNegativeWithValue(
 ); // Output: Value must be positive. Provided -1
 ```
 
+### ThrowPageNotFoundException
+
+`ThrowPageNotFoundException` is used to handle exceptions when a page is not found.
+
+Example: `ThrowPageNotFoundException::forPage`
+
+```php
+use PhpThrow\ThrowPageNotFoundException;
+
+$page = 'non-existent-page';
+ThrowPageNotFoundException::forPage($page); // Throws an exception with the message "The page 'non-existent-page' was not found."
+```
+
+Note: By default, the error code is set to 404. You can change it using the `code` parameter.
+
 ## Contributing
 
 Want to contribute? All contributions are welcome. Read the [contributing guide](CONTRIBUTING.md).
