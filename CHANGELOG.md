@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/SandroMiguel/php-throw/compare/v1.1.0...v1.2.0) (2024-09-30)
+
+
+### Features
+
+* **src/ThrowPageNotFoundException.php:** exception thrown when a page is not found ([80f907d](https://github.com/SandroMiguel/php-throw/commit/80f907d0e22808d2ab165e96a68640bc7a3fd614))
+
 ## [1.1.0](https://github.com/SandroMiguel/php-throw/compare/v1.0.1...v1.1.0) (2024-03-30)
 
 
